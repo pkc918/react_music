@@ -1,8 +1,21 @@
-import React from "react";
-import "./App.css";
+import React, { useEffect } from "react";
+import { getPlayList, getPlayCatList } from "./api/api";
+import LayoutFrame from "./components/Layout";
 
 function App() {
-  return <div className="App">app react</div>;
+  useEffect(() => {
+    getPlayList().then((res) => {
+      console.log(res);
+    });
+    getPlayCatList().then((res) => {
+      console.log(res);
+    });
+  }, []);
+  return (
+    <div className="App">
+      <LayoutFrame />
+    </div>
+  );
 }
 
 export default App;
