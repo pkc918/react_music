@@ -1,0 +1,40 @@
+.myInput {
+  width: 400px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 0 2px rgb(134 140 160 / 2%);
+
+  .ant-input-group-addon {
+    background-color: var(--button-bg);
+  }
+  .ant-btn {
+    border: none;
+    color: #fff !important;
+    background-color: var(--button-bg);
+
+    &:hover {
+      box-shadow: none;
+      border-color: var(--button-bg);
+    }
+    &:focus {
+      box-shadow: none;
+      border-color: var(--button-bg);
+    }
+  }
+
+  .ant-input {
+    color: #fff;
+    height: 40px;
+    background-color: var(--button-bg);
+    border-color: var(--button-bg);
+
+    &:hover {
+      box-shadow: none;
+      border-color: var(--button-bg);
+    }
+    &:focus {
+      box-shadow: none;
+      border-color: var(--button-bg);
+    }
+  }
+}
