@@ -1,0 +1,61 @@
+.tabbar {
+  padding: 10px;
+  height: 100%;
+  font-size: 15px;
+  background-color: var(--theme-bg);
+
+  .title {
+    color: #fff;
+    font-weight: 600;
+    text-align: center;
+    margin: 0;
+    padding: 20px 0;
+  }
+
+  h5 {
+    color: #eee;
+    padding: 10px 0;
+    margin: 0;
+  }
+
+  .link {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
+    a {
+      margin: 13px 0;
+      display: block;
+      color: var(--body-color);
+      transition: none;
+      font-size: 17px;
+
+      &.active {
+        color: #fff;
+        font-weight: 600;
+
+        .iconFont {
+          background-color: #ff7551;
+        }
+      }
+
+      &:hover {
+        color: #fff;
+        font-weight: 600;
+
+        .iconFont {
+          background-color: #ff7551;
+        }
+      }
+
+      .iconFont {
+        font-weight: 600;
+        width: 30px;
+        padding: 8px;
+        border-radius: 10px;
+        background-color: var(--button-bg);
+        flex-shrink: 0;
+        margin-right: 16px;
+      }
+    }
+  }
+}
