@@ -1,14 +1,20 @@
 import React from "react";
 import { Layout } from "antd";
+import { Outlet } from "react-router-dom";
+import TabBar from "./TabBar";
 const { Header, Footer, Sider, Content } = Layout;
 
 const LayoutFrame: React.FC = () => {
   return (
     <Layout className="layout">
-      <Sider theme="light">Sider</Sider>
+      <Sider>
+        <TabBar />
+      </Sider>
       <Layout>
         <Header>搜索框和用户登录</Header>
-        <Content>二级路由展示的组件</Content>
+        <Content>
+          <Outlet />
+        </Content>
         <Footer>播放器</Footer>
       </Layout>
     </Layout>
