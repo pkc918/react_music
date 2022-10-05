@@ -1,0 +1,14 @@
+.ant-layout-footer {
+  padding: 0;
+
+  .myMedia {
+    width: 100%;
+    background-color: var(--theme-bg);
+
+    .audio {
+      display: block;
+      width: 100%;
+      background-color: var(--theme-bg);
+    }
+  }
+}
