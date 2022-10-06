@@ -16,7 +16,7 @@ export default function request(
       method,
       params: data,
       data: qs.stringify(data),
-      withCredentials: true,
+      withCredentials: false,
     };
 
     if (method.toLowerCase() === "get") {
