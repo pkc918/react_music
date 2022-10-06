@@ -7,7 +7,7 @@ import IconFont from "../components/IconFont";
 //   scriptUrl: ["//at.alicdn.com/t/c/font_3685893_p836jz6du0t.js"],
 // });
 
-const Home: React.FC = () => {
+const Discover: React.FC = () => {
   const [banners, setBanners] = useState<any[]>([]);
   const [playlists, setPlayLists] = useState<any[]>([]);
   const [songs, setSons] = useState<any[]>([]);
@@ -101,4 +101,4 @@ const Home: React.FC = () => {
   );
 };
 
-export default memo(Home);
+export default memo(Discover);
