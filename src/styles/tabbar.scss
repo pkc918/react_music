@@ -1,8 +1,9 @@
 .tabbar {
-  padding: 10px;
+  padding: 10px 20px;
   height: 100%;
   font-size: 15px;
   background-color: var(--theme-bg);
+  border-right: 3px solid #eee;
 
   .title {
     color: #fff;

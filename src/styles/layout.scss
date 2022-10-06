@@ -12,4 +12,10 @@
   box-shadow: 0 20px 50px rgb(0 0 0 / 30%);
   position: relative;
   opacity: 0.8;
+
+  .ant-layout-content {
+    background-color: var(--theme-bg);
+    padding: 20px;
+    overflow-y: auto;
+  }
 }

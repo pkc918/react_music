@@ -1,7 +1,7 @@
 import React from "react";
-import { Link, To } from "react-router-dom";
-import { createFromIconfontCN } from "@ant-design/icons";
+import { To } from "react-router-dom";
 import { NavLink } from "react-router-dom";
+import IconFont from "./IconFont";
 interface linksType {
   path: To;
   title: string;
@@ -30,18 +30,15 @@ const links: linksType[] = [
   },
 ];
 
-const IconFont = createFromIconfontCN({
-  scriptUrl: ["//at.alicdn.com/t/c/font_3685893_p9bqkmrdawh.js"],
-});
-
 const TabBar: React.FC = () => {
   return (
     <div className="tabbar">
       <h2 className="title">MY MUSIC</h2>
       <h5>MENU</h5>
       <nav className="link">
-        {links.map((item) => (
+        {links.map((item, index) => (
           <NavLink
+            key={index}
             className={({ isActive }) => (isActive ? "active" : undefined)}
             to={item.path}
           >

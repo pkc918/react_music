@@ -2,6 +2,8 @@ import React from "react";
 import { Layout } from "antd";
 import { Outlet } from "react-router-dom";
 import TabBar from "./TabBar";
+import TopBar from "./TopBar";
+import MyMedia from "./MyMedia";
 const { Header, Footer, Sider, Content } = Layout;
 
 const LayoutFrame: React.FC = () => {
@@ -11,11 +13,15 @@ const LayoutFrame: React.FC = () => {
         <TabBar />
       </Sider>
       <Layout>
-        <Header>搜索框和用户登录</Header>
+        <Header>
+          <TopBar />
+        </Header>
         <Content>
           <Outlet />
         </Content>
-        <Footer>播放器</Footer>
+        <Footer>
+          <MyMedia />
+        </Footer>
       </Layout>
     </Layout>
   );
