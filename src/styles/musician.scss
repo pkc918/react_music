@@ -1,0 +1,52 @@
+.musician {
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+  header {
+    width: 100%;
+    // position: fixed;
+  }
+  div {
+    color: #fff;
+    padding: 10px 0;
+    .ant-tag {
+      color: #fff;
+    }
+  }
+  .filterName {
+    display: flex;
+    flex-wrap: wrap;
+
+    .ant-tag {
+      width: 4%;
+      text-align: center;
+      margin: 0;
+    }
+  }
+
+  main {
+    overflow-y: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    .songs {
+      cursor: pointer;
+      width: 23%;
+      padding: 0;
+      overflow: hidden;
+      //   color: #fff;
+
+      img {
+        width: 100%;
+        border-radius: 8px;
+      }
+
+      h3 {
+        color: #fff;
+      }
+    }
+  }
+}

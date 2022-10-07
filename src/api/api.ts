@@ -19,3 +19,18 @@ export const getNewSong = () => {
 export const getMv = () => {
   return request("/personalized/mv", "get");
 };
+
+// 热门歌手
+export const getHotMusicians = (data: { offset?: number; limit?: number }) => {
+  return request("/top/artists", "get", data);
+};
+
+// 歌手查询
+export const getMusicians = (data: {
+  cat: number;
+  initial?: string;
+  limit?: number;
+  offset?: number;
+}) => {
+  return request("/artist/list", "get", data);
+};
