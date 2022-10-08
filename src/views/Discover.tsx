@@ -1,42 +1,28 @@
 import { Carousel, Image } from "antd";
-import React, { useState, useEffect, memo } from "react";
-import { getBanner, getNewSong, getPlayList, getMv } from "../api/api";
+import React, { useEffect, memo } from "react";
 import IconFont from "../components/IconFont";
-// import { createFromIconfontCN } from "@ant-design/icons";
-// const IconFont = createFromIconfontCN({
-//   scriptUrl: ["//at.alicdn.com/t/c/font_3685893_p836jz6du0t.js"],
-// });
+import { store } from "../store/store";
 
 const Discover: React.FC = () => {
-  const [banners, setBanners] = useState<any[]>([]);
-  const [playlists, setPlayLists] = useState<any[]>([]);
-  const [songs, setSons] = useState<any[]>([]);
-  const [mvs, setMvs] = useState<any[]>([]);
   useEffect(() => {
-    // 第一次执行
-    getBanner().then((res) => {
-      setBanners(res.banners);
-    });
-
-    getPlayList().then((res) => {
-      setPlayLists(res.result);
-    });
-
-    getNewSong().then((res) => {
-      setSons(res.result);
-    });
-
-    getMv().then((res) => {
-      console.log(res.result);
-      setMvs(res.result);
-    });
+    // 轮播图
+    store.getBannerImgs();
+    // 歌单
+    store.getPlayLists();
+    // 新歌
+    store.getNewSongs();
+    // MV
+    store.getRecommendMV();
   }, []);
+
   return (
     <div className="home">
       <div className="banners">
         <Carousel autoplay>
-          {banners.map((item, index) => {
-            return <Image key={index} src={item.imageUrl} />;
+          {store.bannerImgs.map((item) => {
+            return (
+              <Image loading="lazy" key={item.targetId} src={item.imageUrl} />
+            );
           })}
         </Carousel>
       </div>
@@ -44,12 +30,12 @@ const Discover: React.FC = () => {
         <div className="newPlayLists">
           <h2>推荐歌单</h2>
           <div>
-            {playlists.map((item, index) => {
+            {store.playLists.map((item) => {
               return (
-                <div className="playList" key={index}>
+                <div className="playList" key={item.id}>
                   <div>
                     <IconFont className="iconFont" type={"icon-bofang-copy"} />
-                    <img src={item.picUrl} alt="" />
+                    <img loading="lazy" src={item.picUrl} alt="" />
                   </div>
                   <p>{item.name}</p>
                 </div>
@@ -60,17 +46,19 @@ const Discover: React.FC = () => {
         <div className="newPlayLists">
           <h2>推荐新歌</h2>
           <div>
-            {songs.map((item, index) => {
+            {store.newSongs.map((item, index) => {
               return (
-                <div className="newSongs" key={index}>
+                <div className="newSongs" key={item.id}>
                   <span>{index + 1 >= 10 ? index + 1 : "0" + (index + 1)}</span>
                   <div>
-                    <img src={item.picUrl} alt="" />
+                    <img loading="lazy" src={item.picUrl} alt="" />
                     <IconFont className="iconFont" type={"icon-bofang-copy"} />
                   </div>
                   <div className="p">
                     <p>{item.name}</p>
-                    <p>{item.song.artists[0].name}</p>
+                    {item.song.artists.map((artist) => {
+                      return <p key={artist.id}>{artist.name}</p>;
+                    })}
                   </div>
                 </div>
               );
@@ -80,16 +68,18 @@ const Discover: React.FC = () => {
         <div className="newPlayLists">
           <h2>推荐 MV</h2>
           <div>
-            {mvs.map((item, index) => {
+            {store.recommendMVs.map((item, index) => {
               return (
-                <div className="mvs" key={index}>
+                <div className="mvs" key={item.id}>
                   <div>
-                    <img src={item.picUrl} alt="" />
+                    <img loading="lazy" src={item.picUrl} alt="" />
                     <IconFont className="iconFont" type={"icon-bofang-copy"} />
                   </div>
                   <div className="p">
                     <p>{item.name}</p>
-                    <p>{item.artists[0].name}</p>
+                    {item.artists.map((artist) => {
+                      return <p key={artist.id}>{artist.name}</p>;
+                    })}
                   </div>
                 </div>
               );

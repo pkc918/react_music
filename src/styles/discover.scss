@@ -4,8 +4,9 @@
   align-items: center;
   justify-content: center;
   .banners {
-    width: 70%;
-    opacity: 0.9;
+    width: 90%;
+    border-radius: 20px;
+    overflow: hidden;
   }
   main {
     width: 100%;
@@ -79,6 +80,7 @@
           }
 
           .p {
+            flex: 1;
             display: flex;
             flex-direction: column;
             margin: 0 18px;
