@@ -1,25 +1,27 @@
 import { Carousel, Image } from "antd";
+import { observer } from "mobx-react";
 import React, { useEffect, memo } from "react";
 import IconFont from "../components/IconFont";
-import { store } from "../store/store";
+import { discoverStore } from "../store/DiscoverStore";
+// import mobx from "mobx"
 
 const Discover: React.FC = () => {
   useEffect(() => {
     // 轮播图
-    store.getBannerImgs();
+    discoverStore.getBannerImgs();
     // 歌单
-    store.getPlayLists();
+    discoverStore.getPlayLists();
     // 新歌
-    store.getNewSongs();
+    discoverStore.getNewSongs();
     // MV
-    store.getRecommendMV();
+    discoverStore.getRecommendMV();
   }, []);
 
   return (
     <div className="home">
       <div className="banners">
         <Carousel autoplay>
-          {store.bannerImgs.map((item) => {
+          {discoverStore.bannerImgs.map((item) => {
             return (
               <Image loading="lazy" key={item.targetId} src={item.imageUrl} />
             );
@@ -30,7 +32,7 @@ const Discover: React.FC = () => {
         <div className="newPlayLists">
           <h2>推荐歌单</h2>
           <div>
-            {store.playLists.map((item) => {
+            {discoverStore.playLists.map((item) => {
               return (
                 <div className="playList" key={item.id}>
                   <div>
@@ -46,7 +48,7 @@ const Discover: React.FC = () => {
         <div className="newPlayLists">
           <h2>推荐新歌</h2>
           <div>
-            {store.newSongs.map((item, index) => {
+            {discoverStore.newSongs.map((item, index) => {
               return (
                 <div className="newSongs" key={item.id}>
                   <span>{index + 1 >= 10 ? index + 1 : "0" + (index + 1)}</span>
@@ -56,9 +58,9 @@ const Discover: React.FC = () => {
                   </div>
                   <div className="p">
                     <p>{item.name}</p>
-                    {item.song.artists.map((artist) => {
-                      return <p key={artist.id}>{artist.name}</p>;
-                    })}
+                    {item.song.artists.length > 1
+                      ? item.song.artists[0].name + "..."
+                      : item.song.artists[0].name}
                   </div>
                 </div>
               );
@@ -68,7 +70,7 @@ const Discover: React.FC = () => {
         <div className="newPlayLists">
           <h2>推荐 MV</h2>
           <div>
-            {store.recommendMVs.map((item, index) => {
+            {discoverStore.recommendMVs.map((item, index) => {
               return (
                 <div className="mvs" key={item.id}>
                   <div>
@@ -77,9 +79,9 @@ const Discover: React.FC = () => {
                   </div>
                   <div className="p">
                     <p>{item.name}</p>
-                    {item.artists.map((artist) => {
-                      return <p key={artist.id}>{artist.name}</p>;
-                    })}
+                    {item.artists.length > 1
+                      ? item.artists[0].name + "..."
+                      : item.artists[0].name}
                   </div>
                 </div>
               );
@@ -91,4 +93,4 @@ const Discover: React.FC = () => {
   );
 };
 
-export default memo(Discover);
+export default memo(observer(Discover));
