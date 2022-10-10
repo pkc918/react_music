@@ -27,8 +27,7 @@ export default function request(
 
     axios(option)
       .then((res) => {
-        console.log(res.data, "from request.ts line 30");
-
+        // console.log(res.data, "from request.ts line 30");
         resolve(res.data);
       })
       .catch((err) => {
