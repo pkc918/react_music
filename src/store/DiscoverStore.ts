@@ -63,8 +63,6 @@ class DiscoverStore {
     getBanner().then((res: { banners: bannerImgsType }) => {
       console.log(res, "from store's line 15");
       runInAction(() => {
-        console.log("魔杖啦");
-
         this.bannerImgs = res.banners;
       });
     });
