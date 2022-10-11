@@ -1,11 +1,5 @@
 import { makeAutoObservable, action, runInAction } from "mobx";
-import {
-  getHotMusicians,
-  getMusicians,
-  getMv,
-  getNewSong,
-  getPlayList,
-} from "../api/api";
+import { getHotMusicians, getMusicians } from "../api/api";
 
 interface queryType {
   limit: number;

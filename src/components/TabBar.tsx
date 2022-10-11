@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { To } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import IconFont from "./IconFont";
@@ -9,19 +9,19 @@ interface linksType {
 }
 const links: linksType[] = [
   {
-    path: "login",
+    path: "discover",
     title: "Discover",
-    icon: "icon-gedan",
+    icon: "icon-shouye",
   },
   {
-    path: "a",
-    title: "Trending",
+    path: "musician",
+    title: "Musician",
     icon: "icon-renwu",
   },
   {
-    path: "b",
-    title: "Straming",
-    icon: "icon-shouye",
+    path: "playlist",
+    title: "Playlist",
+    icon: "icon-gedan",
   },
   {
     path: "c",
@@ -51,4 +51,4 @@ const TabBar: React.FC = () => {
   );
 };
 
-export default TabBar;
+export default memo(TabBar);

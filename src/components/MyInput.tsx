@@ -1,13 +1,34 @@
-import React from "react";
+import React, { memo } from "react";
 import { Input } from "antd";
+import { useNavigate, useLocation } from "react-router";
+import { playlistStore } from "../store/PlaylistStore";
 const { Search } = Input;
+const { getPlayListData, setKeyWords } = playlistStore;
 
 const MyInput: React.FC = () => {
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
+
+  const handleSearch = (value: string) => {
+    console.log(pathname);
+    setKeyWords(value);
+    getPlayListData();
+
+    if (pathname !== "/playlist") {
+      navigate("/playlist");
+    }
+  };
+
   return (
     <>
-      <Search placeholder="搜索歌曲 / 歌手" className="myInput" />
+      <Search
+        bordered={false}
+        placeholder="搜索歌曲 / 歌手"
+        className="myInput"
+        onSearch={handleSearch}
+      />
     </>
   );
 };
 
-export default MyInput;
+export default memo(MyInput);
