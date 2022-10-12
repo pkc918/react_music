@@ -1,6 +1,8 @@
 import { Tag } from "antd";
+import { observer } from "mobx-react";
 import React, { PropsWithChildren, Suspense } from "react";
 import useDate from "../hooks/useDate";
+import { mp3 } from "../store/MP3Store";
 interface MusicItemType {
   mv?: number;
   al: {
@@ -26,11 +28,16 @@ const MusicItem: React.FC<PropsWithChildren<MusicItemType>> = ({
 }) => {
   const artists = (ar: { name: string }[]): string => {
     let res: string =
-      ar.length >= 2 ? `${ar[0].name} ${ar[1].name}` : `${ar[0]?.name}`;
+      ar.length >= 2 ? `${ar[0].name}${ar[1].name}` : `${ar[0]?.name}`;
     return res;
   };
+
+  const handleClick = () => {
+    mp3.setId(id);
+  };
+
   return (
-    <div className="musicItem">
+    <div className="musicItem" onClick={handleClick}>
       <Suspense fallback={null}>
         <img src={al.picUrl} alt="" />
         <div className="title">{children}</div>
@@ -45,4 +52,4 @@ const MusicItem: React.FC<PropsWithChildren<MusicItemType>> = ({
   );
 };
 
-export default MusicItem;
+export default observer(MusicItem);
