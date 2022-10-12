@@ -26,6 +26,7 @@ type playListsType = Array<{
 class PlaylistStore {
   query: searchQueryType;
   playLists: playListsType;
+  songCount: number;
   constructor() {
     this.query = {
       keywords: "薛之谦",
@@ -33,21 +34,32 @@ class PlaylistStore {
       offset: 0,
     };
     this.playLists = [];
+    this.songCount = 0;
     makeAutoObservable(this, {
       setKeyWords: action.bound,
+      setQueryOffset: action.bound,
       getPlayListData: action.bound,
     });
+  }
+  setQueryOffset(offset: number) {
+    this.query.offset = offset;
   }
   setKeyWords(keywords: string) {
     this.query.keywords = keywords;
   }
 
-  getPlayListData() {
+  getPlayListData(type: string) {
     searchByKeywords(this.query).then((res) => {
       console.log(res.result, "from PlaylistStore's line 24");
       runInAction(() => {
-        this.playLists = res.result.songs;
-        message.success(`搜索到${res.result.songCount}条结果！`);
+        this.songCount = res?.result?.songCount || 0;
+        let songs = res?.result?.songs || [];
+        if (type === "init") {
+          this.playLists = songs;
+          message.success(`搜索到${this.songCount}条结果！`);
+        } else if (type === "scroll") {
+          this.playLists.push(...songs);
+        }
       });
     });
   }

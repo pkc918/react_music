@@ -36,11 +36,22 @@
   }
   .artists {
     flex: 1;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
   .album {
     flex: 1;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
   .songTime {
     flex: 1;
   }
+}
+
+main.playlist {
+  height: 100%;
+  overflow-y: auto;
 }

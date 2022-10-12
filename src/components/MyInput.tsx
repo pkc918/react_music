@@ -3,7 +3,7 @@ import { Input } from "antd";
 import { useNavigate, useLocation } from "react-router";
 import { playlistStore } from "../store/PlaylistStore";
 const { Search } = Input;
-const { getPlayListData, setKeyWords } = playlistStore;
+const { getPlayListData, setKeyWords, setQueryOffset } = playlistStore;
 
 const MyInput: React.FC = () => {
   const navigate = useNavigate();
@@ -12,7 +12,8 @@ const MyInput: React.FC = () => {
   const handleSearch = (value: string) => {
     console.log(pathname);
     setKeyWords(value);
-    getPlayListData();
+    setQueryOffset(0);
+    getPlayListData("init");
 
     if (pathname !== "/playlist") {
       navigate("/playlist");

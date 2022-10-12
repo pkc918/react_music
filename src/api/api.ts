@@ -34,3 +34,12 @@ export const getMusicians = (data: {
 }) => {
   return request("/artist/list", "get", data);
 };
+
+// 搜索
+export const searchByKeywords = (data: {
+  keywords: string;
+  limit: number;
+  offset: number;
+}) => {
+  return request("/cloudsearch", "get", data);
+};

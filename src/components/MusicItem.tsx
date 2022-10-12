@@ -13,6 +13,7 @@ interface MusicItemType {
     name: string;
   }>;
   dt: number;
+  id: number;
 }
 
 const MusicItem: React.FC<PropsWithChildren<MusicItemType>> = ({
@@ -20,8 +21,14 @@ const MusicItem: React.FC<PropsWithChildren<MusicItemType>> = ({
   al,
   ar,
   dt,
+  id,
   children,
 }) => {
+  const artists = (ar: { name: string }[]): string => {
+    let res: string =
+      ar.length >= 2 ? `${ar[0].name} ${ar[1].name}` : `${ar[0]?.name}`;
+    return res;
+  };
   return (
     <div className="musicItem">
       <Suspense fallback={null}>
@@ -29,9 +36,7 @@ const MusicItem: React.FC<PropsWithChildren<MusicItemType>> = ({
         <div className="title">{children}</div>
         <div className="mv">{mv ? <Tag color="red">MV</Tag> : undefined}</div>
         <div className="artists">
-          {ar.map((item) => (
-            <span key={item.id}>{item.name} </span>
-          ))}
+          <span>{artists(ar)} </span>
         </div>
         <div className="album">{al.name}</div>
         <div className="songTime">{useDate(dt)}</div>
