@@ -43,3 +43,8 @@ export const searchByKeywords = (data: {
 }) => {
   return request("/cloudsearch", "get", data);
 };
+
+// 获取音乐 url
+export const getSongUrlById = (id: number) => {
+  return request("/song/url", "get", { id });
+};

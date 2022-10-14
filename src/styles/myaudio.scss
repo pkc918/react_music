@@ -1,0 +1,71 @@
+.ant-layout-footer {
+  padding: 0;
+  overflow: hidden;
+  background-color: transparent;
+
+  .myAudio {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--theme-bg);
+    display: flex;
+    color: #fff;
+
+    .songInfo {
+      flex: 1;
+      display: flex;
+
+      img {
+        max-width: 80px;
+        border-radius: 10px;
+        overflow: hidden;
+      }
+
+      .artist {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 10px;
+        max-width: 100px;
+        h3 {
+          font-size: 14px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          color: #fff;
+        }
+      }
+    }
+
+    .progress {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .ant-slider {
+        width: 70%;
+      }
+
+      .currentTime {
+        padding: 0 4px;
+      }
+
+      .totalTime {
+        padding: 0 4px;
+      }
+    }
+
+    .controlTools {
+      flex: 1;
+      font-size: 2em;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      span {
+        padding: 16px;
+        cursor: pointer;
+      }
+    }
+  }
+}
