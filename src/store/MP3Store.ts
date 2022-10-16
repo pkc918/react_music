@@ -2,7 +2,7 @@ import { makeAutoObservable, action, runInAction } from "mobx";
 
 interface stateType {
   id: number;
-  mp3: string;
+  mp3: any;
 }
 
 class MP3Store {
@@ -11,14 +11,16 @@ class MP3Store {
   constructor() {
     this.state = {
       id: 0,
-      mp3: "",
+      mp3: {
+        dt: 0,
+      },
     };
     makeAutoObservable(this, {
-      setId: action.bound,
+      setState: action.bound,
     });
   }
-  setId(id: number) {
-    this.state.id = id;
+  setState(state: stateType) {
+    this.state = state;
   }
 }
 

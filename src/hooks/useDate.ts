@@ -1,5 +1,6 @@
 // 将毫秒转化为 分：秒
 const useDate = (date: number): string => {
+  if (date === 0) return "00:00";
   let second = Math.floor(date / 1000);
   let s = second % 60 >= 10 ? second % 60 : `0${second % 60}`;
   let minute = second - (second % 60);

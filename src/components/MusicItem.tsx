@@ -33,7 +33,14 @@ const MusicItem: React.FC<PropsWithChildren<MusicItemType>> = ({
   };
 
   const handleClick = () => {
-    mp3.setId(id);
+    mp3.setState({
+      id: id,
+      mp3: {
+        song: { ...al },
+        artist: artists(ar),
+        dt: dt,
+      },
+    });
   };
 
   return (
