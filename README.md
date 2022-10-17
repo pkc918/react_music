@@ -2,8 +2,8 @@
 
 # Introduction
 
-学习 React TypeScript Mobx ReactRouter
-使用 audio，自定义 audio
+- 学习 React TypeScript Mobx ReactRouter
+- 使用 audio，自定义 audio
 
 # Install Project
 
