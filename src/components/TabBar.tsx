@@ -23,11 +23,11 @@ const links: linksType[] = [
     title: "Playlist",
     icon: "icon-gedan",
   },
-  {
-    path: "c",
-    title: "Playlist",
-    icon: "icon-bofangMV",
-  },
+  // {
+  //   path: "c",
+  //   title: "Playlist",
+  //   icon: "icon-bofangMV",
+  // },
 ];
 
 const TabBar: React.FC = () => {
