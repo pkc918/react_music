@@ -1,29 +1,24 @@
-import { Button } from "antd";
+import { Suspense } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import LayoutFrame from "./components/Layout";
 import Discover from "./views/Discover";
-
-function Login() {
-  return (
-    <div>
-      <Button>登录</Button>
-    </div>
-  );
-}
+import Musician from "./views/Musician";
+import PlayList from "./views/PlayList";
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<LayoutFrame />}>
-            <Route index element={<Navigate to="login" />}></Route>
-            <Route path="login" element={<Discover />}></Route>
-            <Route path="a" element={<Login />}></Route>
-            <Route path="b" element={<Login />}></Route>
-            <Route path="c" element={<Login />}></Route>
-          </Route>
-        </Routes>
+        <Suspense fallback={null}>
+          <Routes>
+            <Route path="/" element={<LayoutFrame />}>
+              <Route index element={<Navigate to="discover" />}></Route>
+              <Route path="discover" element={<Discover />}></Route>
+              <Route path="musician" element={<Musician />}></Route>
+              <Route path="playlist" element={<PlayList />}></Route>
+            </Route>
+          </Routes>
+        </Suspense>
       </BrowserRouter>
     </div>
   );
